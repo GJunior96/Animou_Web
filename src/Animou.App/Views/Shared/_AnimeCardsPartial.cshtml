@@ -1,0 +1,115 @@
+﻿@model Animou.App.API.ApiViewModel;
+
+<div class="card-wrapper">
+    <div class="section">
+        <div class="cards-title"><a>TOP AIRING ANIMES</a></div>
+        <div id="cards" class="cards">
+            <form asp-action="Index" asp-controller="Anime" id="selectAnime" method="post" style="display: none;">
+                <input id="id" type="hidden" name="id"/>
+                <input id="title" type="hidden" name="title"/>
+                <input type="submit" id="submitSelectedAnime"/>
+            </form>
+            @foreach(var item in Model.TopAiringAnimes)
+            {
+                <div id=@item.Id class="card-anime">
+                    <a class="card-cover">
+                        <img class="cover-image" src="@item.coverImage">
+                    </a>
+                    <a class="card-anime-title">@item.title</a>
+                    <div class="dropdown-anime-card">
+                        <div class="card-anime-status-wrapper">
+                            <span class="card-anime-status">@item.status</span>
+                            <span class="card-anime-score">
+                                <i class="thumb"></i>@item.score
+                            </span>
+                        </div>
+                        <div>
+                            @foreach(var studio in item.studios)
+                            { <span class="card-anime-studio">@studio</span> }
+                        </div>
+                        <div>
+                            <span class="card-anime-info">@item.format</span>
+                            <span class="card-anime-info">@item.episodes</span>
+                        </div>
+                        <div>
+                            @foreach(var genre in item.genres)
+                            { <a class="card-anime-genre">@genre</a> }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+
+        <div class="cards-title"><a>UPCOMING ANIMES</a></div>
+        <div id="cards" class="cards">
+
+            @foreach(var item in Model.UpcomingAnimes)
+            {
+                <div id=@item.Id class="card-anime">
+                    <a class="card-cover">
+                        <img class="cover-image" src="@item.coverImage">
+                    </a>
+                    <a class="card-anime-title">@item.title</a>
+                    <div class="dropdown-anime-card">
+                        <div class="card-anime-status-wrapper">
+                            <span class="card-anime-status">@item.status</span>
+                        </div>
+                        <div>
+                            @foreach(var studio in item.studios)
+                            { <span class="card-anime-studio">@studio</span> }
+                        </div>
+                        <div>
+                            <span class="card-anime-info">@item.format</span>
+                            <span class="card-anime-info">@item.episodes</span>
+                        </div>
+                        <div>
+                            @foreach(var genre in item.genres)
+                            { <a class="card-anime-genre">@genre</a> }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+
+        <div class="cards-title"><a>ALL TIME POPULAR ANIMES</a></div>
+        <div id="cards" class="cards">
+            
+            @foreach(var item in Model.MostPopularAnimes)
+            {
+                <div id=@item.Id class="card-anime">
+                    <a class="card-cover">
+                        <img class="cover-image" src="@item.coverImage">
+                    </a>
+                    <a class="card-anime-title">@item.title</a>
+                    <div class="dropdown-anime-card">
+                        <div class="card-anime-status-wrapper">
+                            <span class="card-anime-status">@item.status</span>
+                        </div>
+                        <div>
+                            @foreach(var studio in item.studios)
+                            { <span class="card-anime-studio">@studio</span> }
+                        </div>
+                        <div>
+                            <span class="card-anime-info">@item.format</span>
+                            <span class="card-anime-info">@item.episodes</span>
+                        </div>
+                        <div>
+                            @foreach(var genre in item.genres)
+                            { <a class="card-anime-genre">@genre</a> }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="~/js/animeCardHover.js"></script>

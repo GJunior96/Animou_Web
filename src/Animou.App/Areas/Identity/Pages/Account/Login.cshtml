@@ -1,0 +1,82 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+
+<section class="section">
+    <h3 class="form-title">@ViewData["Title"]</h3>
+
+    <form id="account" method="post" class="form-login-register">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-wrapper">
+            <label asp-for="Input.Email" class="form-field-label"></label>
+            <span class="form-icon-wrapper"><i class="form-icon fa-solid fa-envelope"></i></span>
+            <input asp-for="Input.Email" class="form-field form-email" autocomplete="username" aria-required="true" />
+            <span asp-validation-for="Input.Email" class="help is-danger"></span>
+        </div>
+                <div class="form-wrapper">
+                    <label asp-for="Input.Password" class="form-field-label"></label>
+                    <span class="form-icon-wrapper"><i class="form-icon form-icon-password fa-solid fa-eye-slash"></i></span>
+                    <input asp-for="Input.Password" class="form-field form-password" autocomplete="current-password" aria-required="true" />
+                    <span asp-validation-for="Input.Password" class="help is-danger"></span>
+                </div>
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe" class="form-field-label">
+                        <input class="form-check" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <div class="form-submit-wrapper">
+                    <button id="login-submit" type="submit" class="button is-primary is-rounded is-medium">Log in</button>
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
+                        Register as a new user
+                    </a>
+                </div>
+                <div>
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                </div>
+            </form>
+</section>
+
+@*<div class="row">
+    
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h3>Use another service to log in.</h3>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                            about setting up this ASP.NET application to support logging in via external services</a>.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>*@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

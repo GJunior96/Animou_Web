@@ -1,0 +1,18 @@
+﻿@* View responsável por mostrar a página inicial *@
+
+@model Animou.App.API.ApiViewModel;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="section"> 
+    <form method="get" asp-action="Index" asp-controller="Search">
+        <partial name="_SearchPartial"/>
+    </form>
+</section>
+
+<section>
+    <partial name="_AnimeCardsPartial"/>
+</section>
+
+

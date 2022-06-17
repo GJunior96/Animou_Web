@@ -1,0 +1,14 @@
+﻿@model bool
+
+@if (Model == true)
+{
+    <div class="alert success">
+      <button class="delete"></button>
+      Anime added to list successfully!
+    </div>
+} else {
+    <div class="alert failure">
+      <button class="delete"></button>
+      Can't add anime to list!
+    </div>
+}

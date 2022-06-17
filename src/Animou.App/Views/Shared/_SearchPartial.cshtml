@@ -1,0 +1,51 @@
+﻿@model Animou.App.API.ApiViewModel;
+
+<div class="searchbar-wrapper">
+    <div class="control has-icons-left">
+        <input id="search" class="input is-rounded" type="text"/>
+        <input id="submit" type="submit" style="display: none;"/>
+        <span class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+    </div>
+</div>
+
+<div class="filter-wrapper">
+    <div class="genres-and-tags"></div>
+
+    <div class="filter-buttons">
+        <div class="dropdown-wrapper">
+            <button type="button" class="button-filter">
+                <span>genres</span>
+            </button>
+            <div class="dropdown-filter">
+                <div class="dropdown-header">
+                    <span>SELECT GENRES</span>
+                    <span><i class="fa-solid fa-xmark"></i></span>
+                </div>
+                <div  class="dropdown-items-wrapper">
+                    @foreach(var item in Model.Genres)
+                    { 
+                        <button type="submit" class="dropdown-items @item">
+                            @item
+                        </button> 
+                    }
+                    <input id= "filter" type="text" style="display: none;" value=""/>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="dropdown-wrapper">
+            <button type="button" class="button-filter">
+                <i class="fa-solid fa-filter"></i>
+            </button>
+            <div class="dropdown-filter">
+                <a href="#" class="">
+                    Dropdown item
+                </a>
+            </div>
+        </div>*@
+    </div>
+</div>
+
+

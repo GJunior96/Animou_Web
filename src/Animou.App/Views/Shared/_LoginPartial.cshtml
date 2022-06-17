@@ -1,0 +1,38 @@
+﻿@using Animou.Data.Identity
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <a class="navbar-item">
+        @if (UserManager.GetUserAsync(User).Result.Avatar != null)
+        {
+            <img style="width:40px;height:40px;object-fit:cover;clip-path:circle()" src="~/images/uploaded/@UserManager.GetUserAsync(User).Result.Avatar"/>
+        }
+        else
+        {
+            <img style="width:40px;height:40px;object-fit:cover;clip-path:circle()" src="~/images/native/no-avatar.jpg"/>
+        }
+    </a>
+
+    <a class="navbar-item" id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+        Hello @UserManager.GetUserName(User)!
+    </a>
+    
+    <form class"navbar-item" id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <button class="button is-primary is-rounded" id="logout" type="submit">Logout</button>
+    </form>
+}
+else
+{
+    <div class="buttons">
+        <a class="button is-primary is-rounded" id="register" asp-area="Identity" asp-page="/Account/Register">
+            <strong>Sign Up</strong>
+        </a>
+        <a class="button is-primary is-rounded is-outlined" id="login" asp-area="Identity" asp-page="/Account/Login">
+            Login
+        </a>
+    </div>
+}

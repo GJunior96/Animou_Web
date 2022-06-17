@@ -1,0 +1,22 @@
+﻿@model Animou.App.API.ApiViewModel;
+@{
+}
+
+<div class="card-wrapper">
+    <div class="cards-title"><a>SEARCH RESULT</a></div>
+    <form asp-action="Index" asp-controller="Anime" id="selectAnime" method="post" style="display: none;">
+        <input id="id" type="hidden" name="id"/>
+        <input id="title" type="hidden" name="title"/>
+        <input type="submit" id="submitSelectedAnime"/>
+    </form>
+    <div class="cards">
+        
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+<script src="~/js/searchAnimes.js"></script>
+
+<script src="~/js/animeCardHover.js"></script>

@@ -1,0 +1,17 @@
+﻿@model Animou.App.API.ApiAnimeViewModel
+
+@{
+}
+<div id="animeDetailsId" style="display:none;">@Model.Id</div>
+<div id="listAlert" class="list-alert"></div>
+
+<script>
+    var id = '@Model.Id',
+        title = '@Model.title',
+        onList = '@Model.onList';
+    console.log(id)
+        
+
+</script>
+
+<script src="~/js/animeDetails.js"></script>

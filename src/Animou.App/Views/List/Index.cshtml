@@ -1,0 +1,17 @@
+﻿@* View responsável por mostrar a lista de animes *@
+
+@using Newtonsoft.Json
+@model IEnumerable<AnimeViewModel>
+@{
+}
+
+<section class="section">
+    <div>
+    </div>
+</section>
+
+<script>
+    var data = { },
+        items = @Html.Raw(JsonConvert.SerializeObject(Model));
+</script>
+<script src="~/js/animeList.js"></script>

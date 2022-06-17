@@ -1,0 +1,37 @@
+﻿
+@model Animou.App.API.ApiViewModel;
+@{
+}
+
+<section class="section"> 
+
+    <form id="searchForm" method="get" asp-action="UpdateSearch" asp-controller="Search" data-ajax="true" data-ajax-method="get" data-ajax-update="#searchUpdated" data-ajax-mode="replace" data-ajax-url="@Url.Action("UpdateSearch", "Search")">
+        <partial name="_SearchPartial"/>
+        <input id="urlParameters" type="hidden" asp-for="UrlParameters"/>
+    </form>
+
+</section>
+
+<section id="searchUpdated" class="section">
+    @if (Model.UrlParameters == null)
+    {
+        <partial name="_AnimeCardsPartial"/>
+    } else
+    {
+        <partial name="_SearchResultPartial"/>
+    }
+</section>
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script> var urlParameters = '@Model.UrlParameters' </script>
+}
+
+<script>
+    form = document.querySelector('#searchForm');
+    form.addEventListener('submit', function () {
+        var params = window.location.search;
+        document.getElementById('urlParameters').setAttribute('value', params)
+    });
+</script>
